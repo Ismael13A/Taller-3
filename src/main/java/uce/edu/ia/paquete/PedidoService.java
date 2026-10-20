@@ -1,4 +1,4 @@
-package uce.edu.jc.paquete;
+package uce.edu.ia.paquete;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;

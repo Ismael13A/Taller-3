@@ -1,4 +1,4 @@
-package uce.edu.jc.paquete;
+package uce.edu.ia.paquete;
 
 public class Pedido {
 

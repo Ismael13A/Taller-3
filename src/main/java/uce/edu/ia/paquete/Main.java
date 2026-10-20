@@ -1,4 +1,4 @@
-package uce.edu.jc.paquete;
+package uce.edu.ia.paquete;
 
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
