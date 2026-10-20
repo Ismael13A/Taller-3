@@ -18,6 +18,6 @@ public class ReservaService {
         
         notificacionService.enviarNotificacion(reserva.getEmail(), titulo, mensaje);
 
-        notificacionService = null; // el objeto queda elegible para el recolector (GC)
+        notificacionService = null; // el objeto queda elegible para el recolector GC
     }
 }
