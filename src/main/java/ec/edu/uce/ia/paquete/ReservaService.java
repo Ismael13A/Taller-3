@@ -16,7 +16,6 @@ public class ReservaService {
         System.out.println("Correo de contacto: " + reserva.getEmail());
         System.out.println("Reserva procesada con éxito.");
 
-        NotificacionService notificacionService = new NotificacionService();
         String titulo = "Confirmación de su reserva";
         String mensaje = "Estimado/a " + reserva.getUsuario() + ", su reserva para el servicio de " +
                 reserva.getServicio() + " por un valor de $" + reserva.getCosto() +
