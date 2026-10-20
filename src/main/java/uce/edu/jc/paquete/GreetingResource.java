@@ -1,4 +1,4 @@
-package uce.edu.ec.paquete;
+package uce.edu.jc.paquete;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
