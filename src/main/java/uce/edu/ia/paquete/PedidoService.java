@@ -9,8 +9,8 @@ import jakarta.inject.Singleton;
 @ApplicationScoped 
 public class PedidoService {
 
-    @Inject 
-    private MailService diferente;
+   // @Inject 
+   // private MailService diferente;
 
     public void realizar(Pedido pedido) {
 //lookup de la clase MailService
