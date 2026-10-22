@@ -6,6 +6,7 @@ public class Pedido {
     private String producto;
     private double total;
     private String correo;
+    private String telefono;
 
     public Pedido() {
 
