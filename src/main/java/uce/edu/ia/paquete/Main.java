@@ -19,7 +19,7 @@ public class Main implements QuarkusApplication {
     @Override 
     public int run(String... args) {
 
-        Pedido pedido = new Pedido("Juan", "laptop", 15000.0, "juan@gmail.com");
+        Pedido pedido = new Pedido("Juan", "laptop", 15000.0, "juan@gmail.com","0997959837");
         pedido.setTelefono("0997959837");
         this.pedidoService.realizar(pedido);
     
