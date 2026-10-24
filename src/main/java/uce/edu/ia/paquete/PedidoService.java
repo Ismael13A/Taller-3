@@ -1,11 +1,9 @@
 package uce.edu.ia.paquete;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.inject.spi.CDI;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.inject.Singleton;
+
 
 @ApplicationScoped
 public class PedidoService {
@@ -31,7 +29,9 @@ public class PedidoService {
 
         // Notificacion del pedido por correo electronico
         this.notificacioncorreo.enviar(pedido.getCorreo(), cuerpo);
-       
+        this.notificacioncorreo.setCantidad(this.notificacioncorreo.getCantidad()+1);
+        System.out.println("Cantidad de correos enviados pedido: " + this.notificacioncorreo.getCantidad());
+        this.notificacioncorreo.setNombre("Correo de pedido");
         // Notificacion de pedido por SMS
         this.notificacionSMS.enviar(pedido.getTelefono(), cuerpo);
     }

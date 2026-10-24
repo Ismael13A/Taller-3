@@ -15,4 +15,23 @@ public class SMSService implements Notificacion {
         System.out.println("Fin del envio de SMS");
     }
 
+    @Override
+    public Integer getCantidad() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setCantidad(Integer cantidad) {
+  }
+
+    @Override
+    public String getNombre() {
+        return null;
+   }
+
+    @Override
+    public void setNombre(String nombre) {
+    }
+
 }
