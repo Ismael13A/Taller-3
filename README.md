@@ -1,3 +1,17 @@
+Preguntas de análisis
+1.- ¿En qué parte del ejercicio se aplica IoC y en cuál DI?
+Inversión de Control se aplica cuando asignamos el control del ciclo de vida mediantes las anotaciones @ApplicationScoped, @Dependent y @QuarkusMain, ya que de esta manera el contenedor se encargará de crear las dependencias de negocio.
+Inyección de dependencias aplicamos en la clase VentaService al momento de inyectar las clases DescuentoVip, DescuentoRegular y Auditoria. Esto lo realizamos con ayuda del @Inject y el @Named para que el contenedor se encargue de insertar las instancias requeridas.
+2.- ¿Qué función cumplen los Qualifiers y por qué son necesarios?
+Los Qualifiers ayuda a identificar (etiquetar) de manera única a una clase u objeto dentro del contenedor, como por ejemplo en nuestro código las clases DecuentoVip y DescuentoRegular. 
+Son necesarios cuando existen clases múltiples que implementan un interfaz. Sin los Qualifiers el contenedor no sabría a cuál de las implementaciones inyectar y ocasionaría un error, entonces le ayuda al contenedor a identificar la clase que debe inyectar.
+3.- ¿Cuál es la diferencia entre @ApplicationScoped y @Dependent?
+@ApplicationScoped: Indica que el contenedor creara una sola instancia durante toda la ejecución de el programa. Esta va a vivir mientras la aplicación este activa.
+@Dependent: Su ciclo de vida dependerá estrictamente de el objeto que lo inyecte. Creará una instancia nueva y única por cada vez que se lo inyecte.
+4.- ¿Por qué las instancias @ApplicationScoped pueden reutilizarse entre varias ventas?
+Por que su ciclo de vida estará activo siempre que la aplicación este activa, y como crea una única instancia en el contendor esta se puede reutilizar las veces que haga necesario sin necesidad de crear aún más instancias.
+5.- ¿Qué sucedería si se elimina el Qualifier de un punto de inyección de CalculadoraDescuento?
+El contenedor arrojara un error en tiempo de compilación (AmbiguousResolutionException). Al existir 2 clases que implementan la interfaz, el contenedor no sabrá cual de las dos inyectar debido a que no tendrán ninguna etiqueta.
 # pa2_u1_p2_ia
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
