@@ -6,37 +6,39 @@ import jakarta.inject.Named;
 
 @ApplicationScoped
 public class VentaService {
+
+    // Inyeccion por Atributo
+
+    @Inject
+    @Named("regular")
+    private CalculadoraDescuento descuentoRegular;
+    @Inject
+    @Named("audi")
+    private Auditoria auditoria;
+    @Inject
+    @Named("vip")
+    private CalculadoraDescuento descuentoVIP;
+
     /*
-     * // Inyeccion por Atributo
-     * 
-     * @Inject
-     * 
-     * @Named("regular")
-     * private DescuentoRegular descuentoRegular;
-     * 
-     * @Inject
-     * 
-     * @Named ("audi")
+     * // Inyeccion por Constructor
+     * private CalculadoraDescuento descuentoRegular;
+     * private CalculadoraDescuento descuentoVIP;
      * private Auditoria auditoria;
      * 
      * @Inject
+     * public VentaService(
      * 
-     * @Named("vip")
-     * private DescuentoVIP descuentoVIP;
+     * @Named("regular") CalculadoraDescuento descuentoRegular,
+     * 
+     * @Named("vip") CalculadoraDescuento descuentoVIP,
+     * 
+     * @Named("audi") Auditoria auditoria) {
+     * 
+     * this.descuentoRegular = descuentoRegular;
+     * this.descuentoVIP = descuentoVIP;
+     * this.auditoria = auditoria;
+     * }
      */
-
-    // Inyeccion por Constructor
-    private DescuentoVIP descuentoVIP;
-    private DescuentoRegular descuentoRegular;
-    private Auditoria auditoria;
-
-    @Inject
-    public VentaService(@Named("regular") DescuentoRegular descuentoRegular, @Named("vip") DescuentoVIP descuentoVIP,
-            @Named("audi") Auditoria auditoria) {
-        this.descuentoRegular = descuentoRegular;
-        this.descuentoVIP = descuentoVIP;
-        this.auditoria = auditoria;
-    }
 
     public Venta procesarVenta(Integer numeroVenta, String tipoCliente, double monto) {
         double valorDescuento = 0.0;
