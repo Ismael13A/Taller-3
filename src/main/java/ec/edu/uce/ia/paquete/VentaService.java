@@ -1,0 +1,68 @@
+package ec.edu.uce.ia.paquete;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
+@ApplicationScoped
+public class VentaService {
+    /*
+     * // Inyeccion por Atributo
+     * 
+     * @Inject
+     * 
+     * @Named("regular")
+     * private DescuentoRegular descuentoRegular;
+     * 
+     * @Inject
+     * 
+     * @Named ("audi")
+     * private Auditoria auditoria;
+     * 
+     * @Inject
+     * 
+     * @Named("vip")
+     * private DescuentoVIP descuentoVIP;
+     */
+
+    // Inyeccion por Constructor
+    private DescuentoVIP descuentoVIP;
+    private DescuentoRegular descuentoRegular;
+    private Auditoria auditoria;
+
+    @Inject
+    public VentaService(@Named("regular") DescuentoRegular descuentoRegular, @Named("vip") DescuentoVIP descuentoVIP,
+            @Named("audi") Auditoria auditoria) {
+        this.descuentoRegular = descuentoRegular;
+        this.descuentoVIP = descuentoVIP;
+        this.auditoria = auditoria;
+    }
+
+    public Venta procesarVenta(Integer numeroVenta, String tipoCliente, double monto) {
+        double valorDescuento = 0.0;
+        double procentaje = 0.0;
+
+        if ("regular".equalsIgnoreCase(tipoCliente)) {
+            procentaje = 0.05;
+            valorDescuento = descuentoRegular.calcularDescuento(monto);
+        } else if ("vip".equalsIgnoreCase(tipoCliente)) {
+            procentaje = 0.15;
+            valorDescuento = descuentoVIP.calcularDescuento(monto);
+        }
+        double total = monto - valorDescuento;
+
+        return new Venta(numeroVenta, tipoCliente.toUpperCase(), monto, procentaje, total);
+
+    }
+
+    public void realizarVenta(Venta venta) {
+        System.out.println("Realizando venta...");
+        System.out.println("Venta: " + venta.getNumeroventa());
+        System.out.println("Tipo: " + venta.getTipoCliente());
+        System.out.println("Monto: $" + venta.getMonto());
+        System.out.println("Descuento: " + (int) (venta.getDescuento() * 100) + "%");
+        System.out.println("Total: $" + venta.getTotal());
+        auditoria.registrar();
+    }
+
+}
