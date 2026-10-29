@@ -24,12 +24,8 @@ public class Main implements QuarkusApplication {
 
         Pedido pedido = new Pedido("Juan", "laptop", 15000.0, "juan@gmail.com","0997959837");
         pedido.setTelefono("0997959837");
-        this.pedidoService.realizar(pedido);
+        this.pedidoService.realizar(pedido,"1");
 
-        Compra compra = new Compra("Ismael", "celular", 15000.0, "ismael@gmail.com","0981645998");
-        compra.setTelefono("0981645998");
-        this.compraService.realizar(compra);
-    
 
         return 0;
     }
