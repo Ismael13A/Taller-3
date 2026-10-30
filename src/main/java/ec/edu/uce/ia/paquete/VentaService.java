@@ -1,5 +1,6 @@
 package ec.edu.uce.ia.paquete;
 
+import ec.edu.uce.ia.paquete.interceptors.NotificarVenta;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -12,9 +13,6 @@ public class VentaService {
     @Inject
     @Named("regular")
     private CalculadoraDescuento descuentoRegular;
-    @Inject
-    @Named("audi")
-    private Auditoria auditoria;
     @Inject
     @Named("vip")
     private CalculadoraDescuento descuentoVIP;
@@ -56,7 +54,7 @@ public class VentaService {
         return new Venta(numeroVenta, tipoCliente.toUpperCase(), monto, procentaje, total);
 
     }
-
+    @NotificarVenta 
     public void realizarVenta(Venta venta) {
         System.out.println("Realizando venta...");
         System.out.println("Venta: " + venta.getNumeroventa());
@@ -64,7 +62,7 @@ public class VentaService {
         System.out.println("Monto: $" + venta.getMonto());
         System.out.println("Descuento: " + (int) (venta.getDescuento() * 100) + "%");
         System.out.println("Total: $" + venta.getTotal());
-        auditoria.registrar();
+        
     }
 
 }
