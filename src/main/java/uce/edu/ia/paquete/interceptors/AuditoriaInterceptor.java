@@ -2,6 +2,7 @@ package uce.edu.ia.paquete.interceptors;
 
 import java.lang.reflect.Parameter;
 
+import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
@@ -11,6 +12,7 @@ import uce.edu.ia.paquete.Pedido;
 
 @Auditoria
 @Interceptor 
+@Priority (Interceptor.Priority.APPLICATION + (2))
 public class AuditoriaInterceptor {
     
     @Inject 
@@ -42,7 +44,7 @@ public class AuditoriaInterceptor {
         String correo = pedido.getCorreo();
 
         this.auditoriaService.guardarEnlaBase(cliente, total,correo);
-        System.out.println("Mensaje luego de que se ejecuta el metodo interceptado ");
+        System.out.println("-----Mensaje luego de que se ejecuta el metodo interceptado ----");
         return resultado;
     }
 }
