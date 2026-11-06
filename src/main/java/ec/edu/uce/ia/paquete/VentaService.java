@@ -1,6 +1,7 @@
 package ec.edu.uce.ia.paquete;
 
 import ec.edu.uce.ia.paquete.interceptors.NotificarVenta;
+import ec.edu.uce.ia.paquete.interceptors.Validar;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -54,6 +55,8 @@ public class VentaService {
         return new Venta(numeroVenta, tipoCliente.toUpperCase(), monto, procentaje, total);
 
     }
+
+    @Validar 
     @NotificarVenta 
     public void realizarVenta(Venta venta) {
         System.out.println("Realizando venta...");

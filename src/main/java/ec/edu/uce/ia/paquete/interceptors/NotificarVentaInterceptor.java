@@ -2,6 +2,7 @@ package ec.edu.uce.ia.paquete.interceptors;
 
 import ec.edu.uce.ia.paquete.NotificarVentaService;
 import ec.edu.uce.ia.paquete.Venta;
+import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
@@ -9,6 +10,7 @@ import jakarta.interceptor.InvocationContext;
 
 @NotificarVenta
 @Interceptor
+@Priority (Interceptor.Priority.APPLICATION + (2))
 public class NotificarVentaInterceptor {
 
     @Inject
