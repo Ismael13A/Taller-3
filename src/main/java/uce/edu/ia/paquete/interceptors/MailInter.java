@@ -16,10 +16,8 @@ public class MailInter {
     public Object enviarMail(InvocationContext context) throws Exception {
         Object result = context.proceed();
 
-         Object[] valores = context.getParameters();
-
+        Object[] valores = context.getParameters();
         Pedido pedido = (Pedido) valores[0];
-
         String cliente = pedido.getCliente();
         System.out.println("-------Enviando correo al cliente : "+
         cliente+"------ ");
